@@ -12,6 +12,12 @@ export interface Language {
   rtl?: boolean;
 }
 
+type GetLangData = () => Record<string, any> | Promise<Record<string, any>>;
+
+export interface CustomLanguage extends Language {
+  data: Record<string, any> | GetLangData;
+}
+
 export type TranslationKeys = NestedKeyOf<typeof fallbackLangData>;
 
 export const defaultLang = { code: "en", label: "English" };
@@ -86,15 +92,25 @@ if (import.meta.env.DEV) {
 
 let currentLang: Language = defaultLang;
 let currentLangData = {};
+let customLangData = {};
 
-export const setLanguage = async (lang: Language) => {
-  currentLang = lang;
+export const setLanguage = async (
+  lang: Language,
+  customLang?: CustomLanguage,
+) => {
+  currentLang = customLang || lang;
+  customLangData = !customLang
+    ? {}
+    : typeof customLang.data === "function"
+    ? await customLang.data()
+    : customLang.data;
+
   document.documentElement.dir = currentLang.rtl ? "rtl" : "ltr";
   document.documentElement.lang = currentLang.code;
 
   if (lang.code.startsWith(TEST_LANG_CODE)) {
     currentLangData = {};
-  } else {
+  } else if (!customLang) {
     try {
       currentLangData = await import(
         /* webpackChunkName: "locales/[request]" */ `./locales/${currentLang.code}.json`
@@ -138,6 +154,7 @@ export const t = (
 
   const parts = path.split(".");
   let translation =
+    findPartsForData(customLangData, parts) ||
     findPartsForData(currentLangData, parts) ||
     findPartsForData(fallbackLangData, parts) ||
     fallback;

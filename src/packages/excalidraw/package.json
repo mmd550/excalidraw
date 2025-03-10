@@ -1,6 +1,6 @@
 {
-  "name": "@excalidraw/excalidraw",
-  "version": "0.17.6",
+  "name": "@weblite/excalidraw",
+  "version": "0.17.6-beta.1",
   "main": "main.js",
   "types": "types/packages/excalidraw/index.d.ts",
   "files": [
@@ -8,10 +8,9 @@
     "types/*"
   ],
   "publishConfig": {
-    "access": "public"
+    "@weblite:registry": "https://git.weblite.me/api/v4/projects/207/packages/npm/"
   },
   "description": "Excalidraw as a React component",
-  "repository": "https://github.com/excalidraw/excalidraw",
   "license": "MIT",
   "keywords": [
     "excalidraw",
@@ -84,6 +83,10 @@
     "start": "webpack serve --config webpack.dev-server.config.js",
     "install:deps": "yarn install --frozen-lockfile && yarn --cwd ../../../",
     "build:example": "EXAMPLE=true webpack --config webpack.dev-server.config.js && yarn gen:types",
-    "size": "yarn build:umd && size-limit"
+    "size": "yarn build:umd && size-limit",
+    "prepub": "npm run pack",
+    "pub": "npm publish --tag latest",
+    "prepub:alpha": "npm run pack",
+    "pub:alpha": "npm publish --tag alpha"
   }
 }

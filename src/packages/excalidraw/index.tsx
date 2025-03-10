@@ -7,7 +7,7 @@ import "../../css/app.scss";
 import "../../css/styles.scss";
 
 import { AppProps, ExcalidrawProps } from "../../types";
-import { defaultLang } from "../../i18n";
+import { CustomLanguage, defaultLang } from "../../i18n";
 import { DEFAULT_UI_OPTIONS } from "../../constants";
 import { Provider } from "jotai";
 import { jotaiScope, jotaiStore } from "../../jotai";
@@ -16,7 +16,9 @@ import MainMenu from "../../components/main-menu/MainMenu";
 import WelcomeScreen from "../../components/welcome-screen/WelcomeScreen";
 import LiveCollaborationTrigger from "../../components/live-collaboration/LiveCollaborationTrigger";
 
-const ExcalidrawBase = (props: ExcalidrawProps) => {
+const ExcalidrawBase = (
+  props: ExcalidrawProps & { customLanguages?: CustomLanguage[] },
+) => {
   const {
     onChange,
     initialData,
@@ -44,6 +46,7 @@ const ExcalidrawBase = (props: ExcalidrawProps) => {
     children,
     validateEmbeddable,
     renderEmbeddable,
+    customLanguages,
   } = props;
 
   const canvasActions = props.UIOptions?.canvasActions;
@@ -94,7 +97,11 @@ const ExcalidrawBase = (props: ExcalidrawProps) => {
 
   return (
     <Provider unstable_createStore={() => jotaiStore} scope={jotaiScope}>
-      <InitializeApp langCode={langCode} theme={theme}>
+      <InitializeApp
+        langCode={langCode}
+        theme={theme}
+        customLanguages={customLanguages}
+      >
         <App
           onChange={onChange}
           initialData={initialData}
@@ -248,6 +255,18 @@ export { DefaultSidebar } from "../../components/DefaultSidebar";
 export { normalizeLink } from "../../data/url";
 export { convertToExcalidrawElements } from "../../data/transform";
 export { getCommonBounds } from "../../element/bounds";
+
+export * from "../../element/index";
+
+export { clearAppStateForLocalStorage } from "../../appState";
+
+export * from "../../element/typeChecks";
+
+export { compressData } from "../../data/encode";
+
+export { getFontString } from "../../utils";
+
+export { getLineHeightInPx } from "../../element/textElement";
 
 export {
   elementsOverlappingBBox,
