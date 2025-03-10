@@ -85,7 +85,7 @@ export const DefaultSidebar = Object.assign(
         >
           <Sidebar.Tabs>
             <Sidebar.Header>
-              {rest.__fallback && (
+              {/* {rest.__fallback && (
                 <div
                   style={{
                     color: "var(--color-primary)",
@@ -99,7 +99,7 @@ export const DefaultSidebar = Object.assign(
                 >
                   {t("toolBar.library")}
                 </div>
-              )}
+              )} */}
               <DefaultSidebarTabTriggersTunnel.Out />
             </Sidebar.Header>
             <Sidebar.Tab tab={LIBRARY_SIDEBAR_TAB}>

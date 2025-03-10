@@ -358,7 +358,7 @@ const LayerUI = ({
           tunneled away. We only render tunneled components that actually
         have defaults when host do not render anything. */}
       <DefaultMainMenu UIOptions={UIOptions} />
-      <DefaultSidebar.Trigger
+      {/* <DefaultSidebar.Trigger
         __fallback
         icon={LibraryIcon}
         title={capitalizeString(t("toolBar.library"))}
@@ -374,7 +374,7 @@ const LayerUI = ({
         tab={DEFAULT_SIDEBAR.defaultTab}
       >
         {t("toolBar.library")}
-      </DefaultSidebar.Trigger>
+      </DefaultSidebar.Trigger> */}
       <DefaultOverwriteConfirmDialog />
       {/* ------------------------------------------------------------------ */}
 

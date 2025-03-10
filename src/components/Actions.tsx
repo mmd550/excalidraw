@@ -314,14 +314,14 @@ export const ShapesSwitcher = ({
           >
             {t("toolBar.frame")}
           </DropdownMenu.Item>
-          <DropdownMenu.Item
+          {/* <DropdownMenu.Item
             onSelect={() => app.setActiveTool({ type: "embeddable" })}
             icon={EmbedIcon}
             data-testid="toolbar-embeddable"
             selected={embeddableToolSelected}
           >
             {t("toolBar.embeddable")}
-          </DropdownMenu.Item>
+          </DropdownMenu.Item> */}
           <DropdownMenu.Item
             onSelect={() => app.setActiveTool({ type: "laser" })}
             icon={laserPointerToolIcon}
@@ -331,13 +331,13 @@ export const ShapesSwitcher = ({
           >
             {t("toolBar.laser")}
           </DropdownMenu.Item>
-          <DropdownMenu.Item
+          {/* <DropdownMenu.Item
             onSelect={() => app.setOpenDialog("mermaid")}
             icon={mermaidLogoIcon}
             data-testid="toolbar-embeddable"
           >
             {t("toolBar.mermaidToExcalidraw")}
-          </DropdownMenu.Item>
+          </DropdownMenu.Item> */}
         </DropdownMenu.Content>
       </DropdownMenu>
     </>

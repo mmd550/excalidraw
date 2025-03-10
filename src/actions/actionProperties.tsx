@@ -754,37 +754,38 @@ export const actionChangeFontFamily = register({
         testId: "font-family-code",
       },
     ];
+    return <></>;
 
-    return (
-      <fieldset>
-        <legend>{t("labels.fontFamily")}</legend>
-        <ButtonIconSelect<FontFamilyValues | false>
-          group="font-family"
-          options={options}
-          value={getFormValue(
-            elements,
-            appState,
-            (element) => {
-              if (isTextElement(element)) {
-                return element.fontFamily;
-              }
-              const boundTextElement = getBoundTextElement(element);
-              if (boundTextElement) {
-                return boundTextElement.fontFamily;
-              }
-              return null;
-            },
-            (element) =>
-              isTextElement(element) || getBoundTextElement(element) !== null,
-            (hasSelection) =>
-              hasSelection
-                ? null
-                : appState.currentItemFontFamily || DEFAULT_FONT_FAMILY,
-          )}
-          onChange={(value) => updateData(value)}
-        />
-      </fieldset>
-    );
+    // return (
+    //   <fieldset>
+    //     <legend>{t("labels.fontFamily")}</legend>
+    //     <ButtonIconSelect<FontFamilyValues | false>
+    //       group="font-family"
+    //       options={options}
+    //       value={getFormValue(
+    //         elements,
+    //         appState,
+    //         (element) => {
+    //           if (isTextElement(element)) {
+    //             return element.fontFamily;
+    //           }
+    //           const boundTextElement = getBoundTextElement(element);
+    //           if (boundTextElement) {
+    //             return boundTextElement.fontFamily;
+    //           }
+    //           return null;
+    //         },
+    //         (element) =>
+    //           isTextElement(element) || getBoundTextElement(element) !== null,
+    //         (hasSelection) =>
+    //           hasSelection
+    //             ? null
+    //             : appState.currentItemFontFamily || DEFAULT_FONT_FAMILY,
+    //       )}
+    //       onChange={(value) => updateData(value)}
+    //     />
+    //   </fieldset>
+    // );
   },
 });
 

@@ -1,6 +1,6 @@
 {
-  "name": "@weblite/excalidraw",
-  "version": "0.17.6-beta.1",
+  "name": "@web-lite/excalidraw",
+  "version": "0.17.6-beta.3",
   "main": "main.js",
   "types": "types/packages/excalidraw/index.d.ts",
   "files": [
@@ -8,7 +8,7 @@
     "types/*"
   ],
   "publishConfig": {
-    "@weblite:registry": "https://git.weblite.me/api/v4/projects/207/packages/npm/"
+    "access": "public"
   },
   "description": "Excalidraw as a React component",
   "license": "MIT",
