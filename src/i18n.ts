@@ -110,7 +110,7 @@ export const setLanguage = async (
 
   if (lang.code.startsWith(TEST_LANG_CODE)) {
     currentLangData = {};
-  } else if (!customLang) {
+  } else {
     try {
       currentLangData = await import(
         /* webpackChunkName: "locales/[request]" */ `./locales/${currentLang.code}.json`
