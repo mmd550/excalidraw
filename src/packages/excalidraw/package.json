@@ -84,9 +84,9 @@
     "install:deps": "yarn install --frozen-lockfile && yarn --cwd ../../../",
     "build:example": "EXAMPLE=true webpack --config webpack.dev-server.config.js && yarn gen:types",
     "size": "yarn build:umd && size-limit",
-    "prepub": "npm run pack",
+    "prepub": "npm run pack && yarn build:umd",
     "pub": "npm publish --tag latest",
-    "prepub:alpha": "npm run pack",
+    "prepub:alpha": "npm run pack && yarn build:umd",
     "pub:alpha": "npm publish --tag alpha"
   }
 }
