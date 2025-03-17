@@ -1,6 +1,6 @@
 {
   "name": "@web-lite/excalidraw",
-  "version": "0.17.6-beta.5",
+  "version": "0.17.6-beta.6",
   "main": "main.js",
   "types": "types/packages/excalidraw/index.d.ts",
   "files": [
